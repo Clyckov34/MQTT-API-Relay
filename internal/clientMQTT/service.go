@@ -1,6 +1,7 @@
 package clientMQTT
 
 import (
+	"MQTT/pkg/env"
 	"fmt"
 	"log"
 	"time"
@@ -8,12 +9,10 @@ import (
 	mqtt "github.com/eclipse/paho.mqtt.golang"
 )
 
-
-
 // New инциализация приложение
-func New(ip string, port int) (*mqtt.ClientOptions, error) {
+func New(s *env.Server) (*mqtt.ClientOptions, error) {
 	opt := mqtt.NewClientOptions()
-	opt.AddBroker(fmt.Sprintf("tcp://%v:%v", ip, port))
+	opt.AddBroker(fmt.Sprintf("tcp://%v:%v", s.MqttURL, s.MqttPassword))
 
 	opt.SetClientID("avtomatika_MQT")
 	opt.SetKeepAlive(2 * time.Second)
@@ -36,7 +35,10 @@ func New(ip string, port int) (*mqtt.ClientOptions, error) {
 		}
 	})
 
+	if len(s.MqttUserName) > 0 && len(s.MqttPassword) > 0 {
+		opt.SetUsername(s.MqttUserName)
+		opt.SetPassword(s.MqttPassword)
+	}
+
 	return opt, nil
 }
-
-

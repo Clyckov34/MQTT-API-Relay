@@ -14,8 +14,8 @@ type topic map[string]byte
 var driver = "/devices/energy_constant/controls/value"
 
 // Run запуск приложение
-func Run(server *env.Server) error {
-	clientOpt, err := clientMQTT.New(server.IP, server.Port)
+func Run(s *env.Server) error {
+	clientOpt, err := clientMQTT.New(s)
 	if err != nil {
 		return err
 	}
@@ -41,7 +41,7 @@ func Run(server *env.Server) error {
 		return err
 	}
 
-	time.Sleep(10 * time.Second)
+	time.Sleep(5 * time.Second)
 
 	client.Disconnect(250)
 	time.Sleep(1 * time.Second)

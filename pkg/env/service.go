@@ -2,14 +2,17 @@ package env
 
 import (
 	"errors"
-	"strconv"
 
 	"github.com/joho/godotenv"
 )
 
 type Server struct {
-	IP   string
-	Port int
+	MqttURL      string
+	MqttPort     string
+	MqttUserName string
+	MqttPassword string
+	ClientID     string
+	ClientToken  string
 }
 
 // LoadFile Загружаем файл с окружением
@@ -22,18 +25,10 @@ func LoadFile(path string) error {
 }
 
 // CheckFile проверка данных в файле
-func CheckFile(ip, port string) (*Server, error) {
-	if len(ip) == 0 {
-		return nil, errors.New("Неверный формат URL в файле .env")
+func CheckFile(ser *Server) error {
+	if len(ser.MqttPort) == 0 || len(ser.MqttURL) == 0 || len(ser.ClientID) == 0 || len(ser.ClientToken) == 0 {
+		return errors.New("Не заполнены обязательные поля в app.env")
 	}
 
-	portINT, err := strconv.Atoi(port)
-	if len(port) == 0 || err != nil {
-		return nil, errors.New("Неверный формат PORT в файле .env")
-	}
-
-	return &Server{
-		IP:   ip,
-		Port: portINT,
-	}, nil
+	return nil
 }
