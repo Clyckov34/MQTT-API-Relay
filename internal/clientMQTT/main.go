@@ -10,12 +10,14 @@ import (
 	mqtt "github.com/eclipse/paho.mqtt.golang"
 )
 
+type Topic map[string]string
+
 var (
-	Res   = make(map[string]string)
+	Res   = make(Topic)
 	resMu sync.RWMutex
 )
 
-func RunApp(s *env.Server) (map[string]string, error) {
+func RunApp(s *env.Server) (Topic, error) {
 	clientOpt, err := service.NewClient(s)
 	if err != nil {
 		return nil, err
@@ -85,11 +87,11 @@ func RunApp(s *env.Server) (map[string]string, error) {
 }
 
 // getResults получаем готовые топики с данными
-func getResults() map[string]string {
+func getResults() Topic {
 	resMu.RLock()
 	defer resMu.RUnlock()
 
-	result := make(map[string]string, len(Res))
+	result := make(Topic, len(Res))
 	for k, v := range Res {
 		result[k] = v
 	}
