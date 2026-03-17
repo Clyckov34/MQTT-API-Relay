@@ -1,8 +1,8 @@
 package main
 
 import (
-	"MQTT/internal/clientMQTT"
 	"MQTT/internal/config"
+	"MQTT/internal/mqtt"
 	"fmt"
 
 	"log"
@@ -33,7 +33,7 @@ func init() {
 }
 
 func main() {
-	topiks, err := clientMQTT.RunApp(params)
+	topiks, err := mqtt.RunApp(params)
 	if err != nil {
 		log.Fatalln(err)
 	}

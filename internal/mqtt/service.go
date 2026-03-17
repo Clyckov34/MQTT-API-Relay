@@ -1,4 +1,4 @@
-package clientMQTT
+package mqtt
 
 import (
 	"MQTT/internal/config"

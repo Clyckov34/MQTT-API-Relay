@@ -1,4 +1,4 @@
-package clientMQTT
+package mqtt
 
 import (
 	"MQTT/internal/config"
@@ -6,7 +6,7 @@ import (
 	"sync"
 	"time"
 
-	mqtt "github.com/eclipse/paho.mqtt.golang"
+	paho "github.com/eclipse/paho.mqtt.golang"
 )
 
 type indication map[string]string
@@ -22,7 +22,7 @@ func RunApp(s *config.Params) (indication, error) {
 		return nil, err
 	}
 
-	client := mqtt.NewClient(clientOpt)
+	client := paho.NewClient(clientOpt)
 	if token := client.Connect(); token.WaitTimeout(10*time.Second) && token.Error() != nil {
 		return nil, token.Error()
 	}
@@ -36,7 +36,7 @@ func RunApp(s *config.Params) (indication, error) {
 	done := make(chan bool, 2)
 
 	// Колбэк для обработки сообщений
-	messageHandler := func(client mqtt.Client, msg mqtt.Message) {
+	messageHandler := func(client paho.Client, msg paho.Message) {
 		defer func() {
 			if r := recover(); r != nil {
 				log.Printf("Recovered in message: %v\n", r)
