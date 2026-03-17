@@ -17,6 +17,7 @@ func init() {
 	}
 
 	params = &config.Server{
+		ServerURL:    os.Getenv("SERVER_URL"),
 		MqttURL:      os.Getenv("MQTT_URL"),
 		MqttPort:     os.Getenv("MQTT_PORT"),
 		MqttUserName: os.Getenv("MQTT_USERNAME"),

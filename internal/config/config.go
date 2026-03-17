@@ -7,6 +7,7 @@ import (
 )
 
 type Server struct {
+	ServerURL    string
 	MqttURL      string
 	MqttPort     string
 	MqttUserName string
@@ -26,9 +27,26 @@ func LoadFile(path string) error {
 
 // CheckFile проверка данных в файле
 func CheckFile(ser *Server) error {
-	if len(ser.MqttPort) == 0 || len(ser.MqttURL) == 0 || len(ser.ClientID) == 0 || len(ser.ClientToken) == 0 {
-		return errors.New("Не заполнены обязательные поля в app.env")
+	if !checkParam(ser.ClientID) {
+		return errors.New("Не указан CLIENT_ID")
+	} else if !checkParam(ser.ClientToken) {
+		return errors.New("Не указан CLIENT_TOKEN")
+	} else if !checkParam(ser.ServerURL) {
+		return errors.New("Не указан SERVER_URL")
+	} else if !checkParam(ser.MqttURL) {
+		return errors.New("Не указан MQTT_URL")
+	} else if !checkParam(ser.MqttPort) {
+		return errors.New("Не указан MQTT_PORT")
+	} else {
+		return nil
+	}
+}
+
+// checkParam проверка параметров
+func checkParam(param string) bool {
+	if len(param) == 0 {
+		return false
 	}
 
-	return nil
+	return true
 }
