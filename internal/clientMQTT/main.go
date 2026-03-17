@@ -16,7 +16,7 @@ var (
 	resMu  sync.RWMutex
 )
 
-func RunApp(s *config.Server) (indication, error) {
+func RunApp(s *config.Params) (indication, error) {
 	clientOpt, err := newClient(s)
 	if err != nil {
 		return nil, err

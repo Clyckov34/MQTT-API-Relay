@@ -6,7 +6,7 @@ import (
 	"github.com/joho/godotenv"
 )
 
-type Server struct {
+type Params struct {
 	ServerURL    string
 	MqttURL      string
 	MqttPort     string
@@ -26,7 +26,7 @@ func LoadFile(path string) error {
 }
 
 // CheckFile проверка данных в файле
-func CheckFile(ser *Server) error {
+func CheckFile(ser *Params) error {
 	if !checkParam(ser.ClientID) {
 		return errors.New("Не указан CLIENT_ID")
 	} else if !checkParam(ser.ClientToken) {

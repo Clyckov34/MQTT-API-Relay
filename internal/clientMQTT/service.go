@@ -11,7 +11,7 @@ import (
 type topic map[string]byte
 
 // NewClient инциализация приложение
-func newClient(s *config.Server) (*mqtt.ClientOptions, error) {
+func newClient(s *config.Params) (*mqtt.ClientOptions, error) {
 	opt := mqtt.NewClientOptions()
 	opt.AddBroker(fmt.Sprintf("tcp://%v:%v", s.MqttURL, s.MqttPort))
 

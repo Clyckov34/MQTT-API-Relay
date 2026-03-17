@@ -9,14 +9,14 @@ import (
 	"os"
 )
 
-var params *config.Server
+var params *config.Params
 
 func init() {
 	if err := config.LoadFile("./app.env"); err != nil {
 		log.Fatalln(err)
 	}
 
-	params = &config.Server{
+	params = &config.Params{
 		ServerURL:    os.Getenv("SERVER_URL"),
 		MqttURL:      os.Getenv("MQTT_URL"),
 		MqttPort:     os.Getenv("MQTT_PORT"),
