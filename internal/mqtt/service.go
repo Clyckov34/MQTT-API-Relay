@@ -2,13 +2,24 @@ package mqtt
 
 import (
 	"MQTT/internal/config"
+	"encoding/json"
 	"fmt"
+	"os"
 	"time"
 
 	mqtt "github.com/eclipse/paho.mqtt.golang"
 )
 
 type topic map[string]byte
+
+type TopicsData struct {
+	TopicJSON2 []TopicJSON `json:"topics"`
+}
+
+type TopicJSON struct {
+	Path     string `json:"path"`
+	LevelQoS byte   `json:"level_qos"`
+}
 
 // NewClient инциализация приложение
 func newClient(s *config.Params) (*mqtt.ClientOptions, error) {
@@ -29,18 +40,24 @@ func newClient(s *config.Params) (*mqtt.ClientOptions, error) {
 }
 
 // getTopik получить топик
-func getTopik() topic {
-	return topic{
-		"/devices/sauna_heater_ssr/controls/tempSetpoint_ssr":  2,
-		"/devices/wb-adc/controls/Vin":                         2,
-		"/devices/hwmon/controls/Board Temperature":            2,
-		"/devices/hwmon/controls/CPU Temperature":              2,
-		"/devices/sauna_floor_thermostat/controls/temperature": 2,
-		"/devices/sauna_heater/controls/tempCurrent":           2,
-		"/devices/wb-m1w2_34/controls/External_Sensor_1":       2,
-		"/devices/wb-m1w2_34/controls/External_Sensor_2":       2,
-		"/devices/wb-mr6cu_85/controls/MCU Temperature":        2,
-		"/devices/wb-w1/controls/28-0000102149e4":              2,
-		"/devices/wb-w1/controls/28-00001021f4a9":              2,
+func getTopik(nameFile string) (topic, error) {
+	byte, err := os.ReadFile(nameFile)
+	if err != nil {
+		return nil, err
 	}
+
+	var data TopicsData
+
+	err = json.Unmarshal(byte, &data)
+	if err != nil {
+		return nil, err
+	}
+
+	ttt := make(topic, 0)
+
+	for _, v := range data.TopicJSON2 {
+		ttt[v.Path] = v.LevelQoS
+	}
+
+	return ttt, nil
 }

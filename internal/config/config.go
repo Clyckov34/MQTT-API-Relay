@@ -7,14 +7,15 @@ import (
 )
 
 type Params struct {
-	ServerURL    string
-	ControllerID string
-	MqttURL      string
-	MqttPort     string
-	MqttUserName string
-	MqttPassword string
-	ClientID     string
-	ClientToken  string
+	ServerURL     string
+	ControllerID  string
+	MqttURL       string
+	MqttPort      string
+	MqttUserName  string
+	MqttPassword  string
+	MqttTopicFile string
+	ClientID      string
+	ClientToken   string
 }
 
 // LoadFile Загружаем файл с окружением
@@ -40,6 +41,8 @@ func CheckParams(ser *Params) error {
 		return errors.New("Не указан MQTT_PORT")
 	} else if !checkParam(ser.ControllerID) {
 		return errors.New("Не указан CONTROLLER_ID")
+	} else if !checkParam(ser.MqttTopicFile) {
+		return errors.New("Не указан MQTT_TOPIC_FILE")
 	} else {
 		return nil
 	}

@@ -27,8 +27,12 @@ func RunApp(s *config.Params) (indication, error) {
 		return nil, token.Error()
 	}
 	defer client.Disconnect(250)
+	
+	filters, err := getTopik(s.MqttTopicFile)
+	if err != nil {
+		return nil, err
+	}
 
-	filters := getTopik()
 	expectedTopics := len(filters)
 	received := 0
 

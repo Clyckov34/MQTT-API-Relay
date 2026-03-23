@@ -17,14 +17,15 @@ func init() {
 	}
 
 	params = &config.Params{
-		ServerURL:    os.Getenv("SERVER_URL"),
-		ControllerID: os.Getenv("CONTROLLER_ID"),
-		MqttURL:      os.Getenv("MQTT_URL"),
-		MqttPort:     os.Getenv("MQTT_PORT"),
-		MqttUserName: os.Getenv("MQTT_USERNAME"),
-		MqttPassword: os.Getenv("MQTT_PASSWORD"),
-		ClientID:     os.Getenv("CLIENT_ID"),
-		ClientToken:  os.Getenv("CLIENT_TOKEN"),
+		ServerURL:     os.Getenv("SERVER_URL"),
+		ControllerID:  os.Getenv("CONTROLLER_ID"),
+		MqttURL:       os.Getenv("MQTT_URL"),
+		MqttPort:      os.Getenv("MQTT_PORT"),
+		MqttUserName:  os.Getenv("MQTT_USERNAME"),
+		MqttPassword:  os.Getenv("MQTT_PASSWORD"),
+		MqttTopicFile: os.Getenv("MQTT_TOPIC_FILE"),
+		ClientID:      os.Getenv("CLIENT_ID"),
+		ClientToken:   os.Getenv("CLIENT_TOKEN"),
 	}
 
 	err := config.CheckParams(params)
