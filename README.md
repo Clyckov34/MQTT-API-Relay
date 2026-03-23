@@ -17,8 +17,7 @@
             <li><code>MQTT_PORT</code> - Порт MQTT сервера</li>
             <li><code>MQTT_TOPIC_FILE</code> - Путь к файлу JSON с topic</li>
             <li><code>MQTT_USERNAME</code> - Логин MQTT сервера <code>Дополнительное поле</code></li>
-            <li><code>MQTT_PASSWORD</code> - Пароль MQTT сервера <code>Дополнительное поле</code></li>
-            
+            <li><code>MQTT_PASSWORD</code> - Пароль MQTT сервера <code>Дополнительное поле</code></li> 
         </ul>
     </ol>
 </div>
