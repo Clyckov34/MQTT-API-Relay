@@ -3,7 +3,6 @@ package main
 import (
 	"MQTT/internal/config"
 	"MQTT/internal/mqtt"
-	"fmt"
 
 	"log"
 	"os"
