@@ -3,6 +3,7 @@ package main
 import (
 	"MQTT/internal/config"
 	"MQTT/internal/mqtt"
+	"fmt"
 
 	"log"
 	"os"
@@ -39,6 +40,11 @@ func main() {
 	if err != nil {
 		log.Fatalln(err)
 	}
+
+	// Для теста поглядеть какие данные
+	// for k, v := range topiks {
+	// 	fmt.Printf("%v - %v\n", k, v)
+	// }
 
 	// Отправляем данные на сервер
 	status, err := mqtt.SendJson(params.ServerURL, topiks)
