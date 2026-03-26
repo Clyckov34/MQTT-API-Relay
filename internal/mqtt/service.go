@@ -53,11 +53,11 @@ func getTopik(nameFile string) (topic, error) {
 		return nil, err
 	}
 
-	ttt := make(topic, 0)
+	topic := make(topic, 0)
 
 	for _, v := range data.TopicJSON2 {
-		ttt[v.Path] = v.LevelQoS
+		topic[v.Path] = v.LevelQoS
 	}
 
-	return ttt, nil
+	return topic, nil
 }

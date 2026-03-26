@@ -7,9 +7,17 @@ import (
 	"time"
 )
 
+type Client struct {
+	ServerUrl      string
+	Email          string
+	Token          string
+	ControllerID   string
+	SensorReadings map[string]float64
+}
+
 // SendJson оптравляет данные на сервер
-func SendJson(url string, data indication) (status string, err error) {
-	reqBody, err := json.Marshal(data)
+func SendJson(c Client) (status string, err error) {
+	reqBody, err := json.Marshal(c)
 	if err != nil {
 		return "", err
 	}
@@ -18,7 +26,7 @@ func SendJson(url string, data indication) (status string, err error) {
 		Timeout: time.Duration(10 * time.Second),
 	}
 
-	resp, err := client.Post(url, "application/json", bytes.NewBuffer(reqBody))
+	resp, err := client.Post(c.ServerUrl, "application/json", bytes.NewBuffer(reqBody))
 	if err != nil {
 		return "", err
 	}

@@ -3,6 +3,7 @@ package main
 import (
 	"MQTT/internal/config"
 	"MQTT/internal/mqtt"
+	"fmt"
 
 	"log"
 	"os"
@@ -35,21 +36,29 @@ func init() {
 
 func main() {
 	// Запрашиваем готовые топики с покозаниями
-	topiks, err := mqtt.RunApp(params)
+	clientSensor, err := mqtt.RunApp(params)
 	if err != nil {
 		log.Fatalln(err)
 	}
 
-	// Для теста поглядеть какие данные
-	// for k, v := range topiks {
-	// 	fmt.Printf("%v - %v\n", k, v)
-	// }
+	infoData(clientSensor)
 
 	// Отправляем данные на сервер
-	status, err := mqtt.SendJson(params.ServerURL, topiks)
+	status, err := mqtt.SendJson(clientSensor)
 	if err != nil {
 		log.Fatalln(err)
 	}
 
 	log.Println("Status: " + status)
+}
+
+// infoData Выводит дынные в терминал чтобы посмотреть что пришло с датчиков
+func infoData(c mqtt.Client) {
+	for k, v := range c.SensorReadings {
+		fmt.Printf("%v - %v\n", k, v)
+	}
+
+	fmt.Println("Констроллер ID:", c.ControllerID)
+	fmt.Println("Email Клиента:", c.Email)
+	fmt.Println("Токен Клиента:", c.Token)
 }

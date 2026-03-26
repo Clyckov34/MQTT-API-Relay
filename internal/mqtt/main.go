@@ -17,21 +17,21 @@ var (
 	resMu  sync.RWMutex
 )
 
-func RunApp(s *config.Params) (indication, error) {
+func RunApp(s *config.Params) (Client, error) {
 	clientOpt, err := newClient(s)
 	if err != nil {
-		return nil, err
+		return Client{}, err
 	}
 
 	client := mt.NewClient(clientOpt)
 	if token := client.Connect(); token.WaitTimeout(10*time.Second) && token.Error() != nil {
-		return nil, token.Error()
+		return Client{}, token.Error()
 	}
 	defer client.Disconnect(250)
 
 	filters, err := getTopik(s.MqttTopicFile)
 	if err != nil {
-		return nil, err
+		return Client{}, err
 	}
 
 	expectedTopics := len(filters)
@@ -71,7 +71,7 @@ func RunApp(s *config.Params) (indication, error) {
 
 	token := client.SubscribeMultiple(filters, messageHandler)
 	if token.WaitTimeout(10*time.Second) && token.Error() != nil {
-		return nil, token.Error()
+		return Client{}, token.Error()
 	}
 
 	// Таймаут: 30 секунд — если не все сообщения пришли, всё равно завершаем
@@ -90,14 +90,14 @@ func RunApp(s *config.Params) (indication, error) {
 
 	unsubToken := client.Unsubscribe(topics...)
 	if unsubToken.WaitTimeout(5*time.Second) && unsubToken.Error() != nil {
-		return nil, unsubToken.Error()
+		return Client{}, unsubToken.Error()
 	}
 
-	return getIndication(), nil
+	return getIndication(s), nil
 }
 
 // getIndication получаем готовые топики с данными
-func getIndication() indication {
+func getIndication(s *config.Params) Client {
 	resMu.RLock()
 	defer resMu.RUnlock()
 
@@ -105,5 +105,11 @@ func getIndication() indication {
 	for key, value := range topics {
 		result[key] = value
 	}
-	return result
+	return Client{
+		ServerUrl:      s.ServerURL,
+		Email:          s.ClientEmail,
+		Token:          s.ClientToken,
+		ControllerID:   s.ControllerID,
+		SensorReadings: result,
+	}
 }
