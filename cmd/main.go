@@ -41,7 +41,9 @@ func main() {
 		log.Fatalln(err)
 	}
 
-	infoData(clientSensor)
+	fmt.Println(clientSensor)
+
+	// infoData(clientSensor)
 
 	// Отправляем данные на сервер
 	status, err := mqtt.SendJson(clientSensor)

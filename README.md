@@ -1,7 +1,6 @@
 <div>
     <center><h1>🚀 MQTT Sensor Forwarder</h1></center>
-    <p>Скрипт для получения данных с MQTT-брокера и отправки на внешний API.
-Подписывается на указанные MQTT-топики, получает данные с датчиков и пересылает их на заданный сервер.</p>
+    <p>Утилита для сбора данных с MQTT-брокера и их передачи на внешний HTTP API. Подписывается на заданные топики, обрабатывает сообщения от датчиков и отправляет их на удалённый сервер.</p>
 </div>
 <div>
     <h2>📌 Возможности</h2>
@@ -83,16 +82,27 @@ $ cd WB-8
 <div>
     <h2>📤 Пример вывода</h2>
 
-```bash
-/devices/wb-w1/controls/28-00001021f4a9 - 32.187
-/devices/sauna_heater_ssr/controls/tempSetpoint_ssr - 95
-/devices/wb-m1w2_34/controls/External Sensor_1 - 13.625
-/devices/sauna_heater/controls/tempCurrent - 92.875
-/devices/hwmon/controls/CPU Temperature - 66.218
-Контроллер ID: 000001
-Email: my_mail@yandex.ru
-Токен: igiOA8Xuh0zEdOf5haeX7LOmp1R16AzB
-2026/03/30 21:01:02 Status: 200 OK
+```json
+{
+  "server_url": "https://httpbin.org/post",
+  "client_email": "my_mail@yandex.ru",
+  "client_token": "igiOA8Xuh0zEdOf5haeX7LOmp1R16AzB",
+  "controller_id": "000001",
+  "sensors": {
+    "/devices/hwmon/controls/Board Temperature": 39.25,
+    "/devices/hwmon/controls/CPU Temperature": 66.835,
+    "/devices/sauna_floor_thermostat/controls/temperature": 31.9,
+    "/devices/sauna_heater/controls/tempCurrent": 90.375,
+    "/devices/sauna_heater_ssr/controls/tempSetpoint_ssr": 95,
+    "/devices/wb-adc/controls/Vin": 50.26,
+    "/devices/wb-m1w2_34/controls/External_Sensor_1": 13.3125,
+    "/devices/wb-m1w2_34/controls/External_Sensor_2": 90.375,
+    "/devices/wb-mr6cu_85/controls/MCU Temperature": 42.8,
+    "/devices/wb-w1/controls/28-0000102149e4": 31.75,
+    "/devices/wb-w1/controls/28-00001021f4a9": 32.187
+  }
+}
+
 ```
 
 </div>
