@@ -43,8 +43,6 @@ func main() {
 
 	fmt.Println(clientSensor)
 
-	// infoData(clientSensor)
-
 	// Отправляем данные на сервер
 	status, err := mqtt.SendJson(clientSensor)
 	if err != nil {
@@ -52,15 +50,4 @@ func main() {
 	}
 
 	log.Println("Status: " + status)
-}
-
-// infoData Выводит дынные в терминал чтобы посмотреть что пришло с датчиков
-func infoData(c mqtt.Client) {
-	for k, v := range c.SensorReadings {
-		fmt.Printf("%v - %v\n", k, v)
-	}
-
-	fmt.Println("Констроллер ID:", c.ControllerID)
-	fmt.Println("Email:", c.Email)
-	fmt.Println("Токен:", c.Token)
 }
