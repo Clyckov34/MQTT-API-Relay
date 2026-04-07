@@ -46,13 +46,22 @@
 
 </div>
 <div>
-    <h2>📥 Скачать и подготовить проект</h2>
+    <h2>📥 Вариант 1: Скачать и подготовить проект</h2>
 
 ```bash
 $ wget https://github.com/Clyckov34/MQTT_Sensor_Forwarder/releases/download/wb8/WB-8.zip
 $ unzip WB-8.zip
 $ cd WB-8
 ```
+
+</div>
+<div>
+    <h2>🛠️ Вариант 2: 🛠️ Сборка</h2>
+
+| Платформа          | Команда |
+|--------------------|--------|
+| Wiren Board (ARMv7) | `GOOS=linux GOARCH=arm GOARM=7 go build -o wb8` |
+| Linux (x64)        | `go build -o wb8` |
 
 </div>
 <div>
