@@ -11,6 +11,15 @@
 ![Stars](https://img.shields.io/github/stars/Clyckov34/MQTT_Sensor_Forwarder?style=social)
 
 <div>
+    <h2>🧩 Совместимость</h2>
+
+| Устройство        | Статус |
+|-------------------|--------|
+| Wiren Board 8     | ✅ Протестировано |
+| Другие устройства | ⚠️ Не проверено |
+
+</div>
+<div>
     <h2>📌 Возможности</h2>
     <ul>
         <li>Подключение к MQTT-брокеру</li>
