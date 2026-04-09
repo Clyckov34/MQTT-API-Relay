@@ -12,7 +12,7 @@ import (
 var params *config.Params
 
 func init() {
-	if err := config.LoadFile("./app.env"); err != nil {
+	if err := config.LoadFile("./config.env"); err != nil {
 		log.Fatalln(err)
 	}
 
