@@ -49,7 +49,7 @@
     <h2>📥 Вариант 1: Скачать и подготовить проект</h2>
 
 ```bash
-$ wget https://github.com/Clyckov34/MQTT_Sensor_Forwarder/releases/download/wb8/WB-8.zip
+$ wget https://github.com/Clyckov34/MQTT_Sensor_Forwarder/releases/download/wb8-1.2.1/WB-8.zip
 $ unzip WB-8.zip
 $ cd WB-8
 ```
