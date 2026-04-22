@@ -89,11 +89,11 @@ $ cd WB-8
   "topics": [
     {
       "path": "/devices/hwmon/controls/Board Temperature",
-      "level_qos": 1
+      "level_qos": 2
     },
     {
       "path": "/devices/hwmon/controls/CPU Temperature",
-      "level_qos": 1
+      "level_qos": 2
     }
   ]
 }
