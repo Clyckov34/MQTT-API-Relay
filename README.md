@@ -154,11 +154,11 @@ $ cd WB-8
 
 <h3>📌 Описание полей</h3>
 <ul>
-    <li><code>server_url</code> — адрес API сервера</li>
-    <li><code>client_email</code> — email клиента</li>
-    <li><code>client_token</code> — токен авторизации</li>
-    <li><code>controller_id</code> — идентификатор устройства</li>
-    <li><code>sensors</code> — объект с данными датчиков
+    <li><code>Server</code> — адрес API сервера</li>
+    <li><code>ClientID</code> — email клиента</li>
+    <li><code>Token</code> — токен авторизации</li>
+    <li><code>ControllerID</code> — идентификатор устройства</li>
+    <li><code>SensorReadings</code> — объект с данными датчиков
          <ul>
             <li>ключ — MQTT-топик</li>
             <li>значение — текущее значение датчика</li>
