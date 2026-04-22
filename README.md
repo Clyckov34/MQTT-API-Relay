@@ -132,8 +132,8 @@ $ cd WB-8
 ```json
 {
   "Server": "https://httpbin.org/post",
-  "ClientID": "my_mail@yandex.ru",
-  "Token": "...",
+  "ClientID": "244235",
+  "Token": "Wefefor34rmcfree22svFFE",
   "ControllerID": "000001",
   "SensorReadings": {
     "/devices/hwmon/controls/Board Temperature": 39.25,
