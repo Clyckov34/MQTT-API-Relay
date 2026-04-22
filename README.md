@@ -33,10 +33,6 @@
     </ul>
 </div>
 <div>
-    <h2>🧭 Архитектура</h2>
-    <p>MQTT → MQTT Sensor Forwarder → HTTP API</p>
-</div>
-<div>
     <h2>📂 Структура проекта</h2>
 
 ```
