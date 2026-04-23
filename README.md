@@ -67,15 +67,15 @@ $ cd WB-8
     <h3>1. Настройка окружения</h3>
     <p>Откройте файл config.env и укажите параметры:</p>
     <ul>
-        <li><code>SERVER</code> - Адрес сервера куда будут отправляться показания датчиков</li>
-        <li><code>CONTROLLER_ID</code> - Идентификатор контроллера</li>
-        <li><code>CLIENT_ID</code> - Почта клиента</li>
-        <li><code>CLIENT_TOKEN</code> - Токен клиента</li>
-        <li><code>MQTT_SERVER</code> - URL (IP) адрес MQTT cервера</li>
-        <li><code>MQTT_PORT</code> - Порт MQTT-сервера</li>
-        <li><code>MQTT_TOPIC_FILE</code> - Путь к файлу topic.json</li>
-        <li><code>MQTT_USERNAME</code> - Логин MQTT-сервера <code>Дополнительное поле</code></li>
-        <li><code>MQTT_PASSWORD</code> - Пароль MQTT-сервера <code>Дополнительное поле</code></li> 
+        <li><code>SERVER</code> - Адрес сервера куда будут отправляться показания датчиков <code>string</code></li>
+        <li><code>CONTROLLER_ID</code> - Идентификатор контроллера <code>integer</code></li>
+        <li><code>CLIENT_ID</code> - Идентификатор клиента <code>integer</code></li>
+        <li><code>CLIENT_TOKEN</code> - Токен клиента <code>string</code></li>
+        <li><code>MQTT_SERVER</code> - URL (IP) адрес MQTT cервера <code>string</code></li>
+        <li><code>MQTT_PORT</code> - Порт MQTT-сервера <code>integer</code></li>
+        <li><code>MQTT_TOPIC_FILE</code> - Путь к файлу topic.json <code>string</code></li>
+        <li><code>MQTT_USERNAME</code> - Логин MQTT-сервера <code>string</code> <code>Дополнительное поле</code></li>
+        <li><code>MQTT_PASSWORD</code> - Пароль MQTT-сервера <code>string</code> <code>Дополнительное поле</code></li> 
     </ul>
 </div>
 <div>
