@@ -10,11 +10,11 @@ import (
 )
 
 type Client struct {
-	Server         string
-	ClientID       int
-	Token          string
-	ControllerID   int
-	SensorReadings map[string]float64
+	Server         string             `json:"server"`
+	ClientID       int                `json:"client_id"`
+	Token          string             `json:"token"`
+	ControllerID   int                `json:"controller_id"`
+	SensorReadings map[string]float64 `json:"sensor_readings"`
 }
 
 // SendJsonPOST оптравляет данные на сервер методом POST

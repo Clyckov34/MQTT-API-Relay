@@ -130,11 +130,11 @@ $ cd WB-8
 
 ```json
 {
-  "Server": "https://httpbin.org/post",
-  "ClientID": "244235",
-  "Token": "Wefefor34rmcfree22svFFE",
-  "ControllerID": "000001",
-  "SensorReadings": {
+  "server": "https://httpbin.org/post",
+  "client_id": "244235",
+  "token": "Wefefor34rmcfree22svFFE",
+  "controller_id": "000001",
+  "sensor_readings": {
     "/devices/hwmon/controls/Board Temperature": 39.25,
     "/devices/hwmon/controls/CPU Temperature": 66.835,
     "/devices/sauna_floor_thermostat/controls/temperature": 31.9,
