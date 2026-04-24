@@ -11,7 +11,7 @@
 ![Stars](https://img.shields.io/github/stars/Clyckov34/MQTT_Sensor_Forwarder?style=social)
 
 <div>
-    <img src="example/image.jpeg" width="100%">
+    <img src="example/image.png" width="100%">
 </div>
 <div>
     <h2>Особенности:</h2>
