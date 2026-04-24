@@ -1,5 +1,5 @@
  <div align="center">
-  <h1>🚀 MQTT Sensor Forwarder</h1>
+  <h1>🚀 MQTT API Relay</h1>
   <p>Простая и эффективная утилита для передачи данных с MQTT-брокера на внешний HTTP API.</p>
 </div>
 
