@@ -2,7 +2,7 @@
 
 set -e
 
-SCRIPT_NAME="wb8"
+SCRIPT_NAME="app"
 CURRENT_DIR="$(cd "$(dirname "$0")" && pwd)"
 SCRIPT_PATH="$CURRENT_DIR/$SCRIPT_NAME"
 
