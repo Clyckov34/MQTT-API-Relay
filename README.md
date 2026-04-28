@@ -59,7 +59,7 @@ nano config.env
 nano topic.json
 
 # Вариант 1: Запуск вручную
-chmod +x
+chmod +x app
 ./app
 
 # Вариант 2: Автозапуск
