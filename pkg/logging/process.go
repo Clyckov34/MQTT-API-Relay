@@ -16,5 +16,7 @@ func LogToFile(data any, prefix string) error {
 	l := log.New(file, prefix+": ", log.Ldate|log.Ltime)
 	l.Println(data)
 
+	// Сброс буфера... Гарантия записи на диск
+	file.Sync()
 	return nil
 }

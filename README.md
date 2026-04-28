@@ -48,7 +48,7 @@
     <h2>📥 Вариант 1: Быстрый старт</h2>
 
 ```bash
-wget https://github.com/Clyckov34/MQTT-API-Relay/releases/download/app-2.2.0/app.zip
+wget https://github.com/Clyckov34/MQTT-API-Relay/releases/download/app-2.3.1/app.zip
 unzip app.zip
 cd app
 
@@ -59,6 +59,7 @@ nano config.env
 nano topic.json
 
 # Вариант 1: Запуск вручную
+chmod +x
 ./app
 
 # Вариант 2: Автозапуск
@@ -81,7 +82,7 @@ sudo ./install_autostart.sh
     <h3>1. Настройка окружения</h3>
     <p>Откройте файл config.env и укажите параметры:</p>
     <ul>
-        <li><code>SERVER</code> - Адрес сервера куда будут отправляться показания датчиков <code>string</code></li>
+        <li><code>SERVER</code> - Адрес сервера куда будут отправляться показания датчиков <code>string</code> метод <code>POST</code></li>
         <li><code>CONTROLLER_ID</code> - Идентификатор контроллера <code>integer</code></li>
         <li><code>CLIENT_ID</code> - Идентификатор клиента <code>integer</code></li>
         <li><code>CLIENT_TOKEN</code> - Токен клиента <code>string</code></li>
