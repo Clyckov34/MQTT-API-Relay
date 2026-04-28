@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
-	"fmt"
+	"errors"
 	"net/http"
 	"time"
 )
@@ -41,7 +41,7 @@ func SendJsonPOST(c Client) (status string, err error) {
 	defer resp.Body.Close()
 
 	if resp.StatusCode < 200 || resp.StatusCode >= 300 {
-		return resp.Status, fmt.Errorf("Статус ошибки: %d %s", resp.StatusCode, resp.Status)
+		return resp.Status, errors.New(resp.Status)
 	}
 
 	return resp.Status, nil

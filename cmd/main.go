@@ -36,7 +36,7 @@ func main() {
 	// Отправляем данные на сервер
 	status, err := mqtt.SendJsonPOST(clientSensor)
 	if err != nil {
-		logging.LogToFile(err, `"ERROR" SERVER: `)
+		logging.LogToFile(status+" "+err.Error(), `"ERROR" SERVER: `)
 		log.Fatalln(err)
 	}
 
