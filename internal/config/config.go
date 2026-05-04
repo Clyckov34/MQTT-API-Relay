@@ -22,7 +22,7 @@ type Config struct {
 
 // LoadFile Загружаем файл с окружением
 func LoadEnvFile(fileName string) (*Config, error) {
-	if err := godotenv.Load(fileName); err != nil {
+	if err := godotenv.Overload(fileName); err != nil {
 		return nil, errors.New("Не удалось загрузить файл " + fileName + "Error:" + err.Error())
 	}
 
