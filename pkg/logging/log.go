@@ -5,7 +5,7 @@ import (
 	"os"
 )
 
-// LogToFile записать логов в файл
+// LogToFile записать логи в файл с флагом (Пометкой)
 func LogToFile(data any, prefix string) error {
 	file, err := os.OpenFile("app.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0644)
 	if err != nil {
